@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve, normalize } from 'path';
 import { haveChildren, traverse } from '../src/crawler/crawler';
 import { FileOutput } from '../src/types/page';
 
@@ -12,62 +12,62 @@ describe('Crawler', () => {
     const result = await traverse(testPagesDir, ['svelte'], []);
     const expectedResult = [
       {
-        path: `${currentPath}/test/assets/pages/index.svelte`,
+        path: normalize(`${currentPath}/test/assets/pages/index.svelte`),
       },
       {
-        path: `${currentPath}/test/assets/pages/components.svelte`,
+        path: normalize(`${currentPath}/test/assets/pages/components.svelte`),
       },
       {
         children: [
           {
-            path: `${currentPath}/test/assets/pages/blog/index.svelte`,
+            path: normalize(`${currentPath}/test/assets/pages/blog/index.svelte`),
           },
           {
-            path: `${currentPath}/test/assets/pages/blog/[id].svelte`,
+            path: normalize(`${currentPath}/test/assets/pages/blog/[id].svelte`),
           },
           {
             children: [
               {
-                path: `${currentPath}/test/assets/pages/blog/today/index.svelte`,
+                path: normalize(`${currentPath}/test/assets/pages/blog/today/index.svelte`),
               },
             ],
-            path: `${currentPath}/test/assets/pages/blog/today`,
+            path: normalize(`${currentPath}/test/assets/pages/blog/today`),
           },
         ],
-        path: `${currentPath}/test/assets/pages/blog`,
+        path: normalize(`${currentPath}/test/assets/pages/blog`),
       },
       {
         children: [
           {
-            path: `${currentPath}/test/assets/pages/about/index.svelte`,
+            path: normalize(`${currentPath}/test/assets/pages/about/index.svelte`),
           },
         ],
-        path: `${currentPath}/test/assets/pages/about`,
+        path: normalize(`${currentPath}/test/assets/pages/about`),
       },
       {
         children: [
           {
-            path: `${currentPath}/test/assets/pages/__test__/index.svelte`,
+            path: normalize(`${currentPath}/test/assets/pages/__test__/index.svelte`),
           },
         ],
-        path: `${currentPath}/test/assets/pages/__test__`,
+        path: normalize(`${currentPath}/test/assets/pages/__test__`),
       },
       {
-        path: `${currentPath}/test/assets/pages/[userId].svelte`,
+        path: normalize(`${currentPath}/test/assets/pages/[userId].svelte`),
       },
       {
         children: [
           {
-            path: `${currentPath}/test/assets/pages/[sensor]/current.svelte`,
+            path: normalize(`${currentPath}/test/assets/pages/[sensor]/current.svelte`),
           },
           {
-            path: `${currentPath}/test/assets/pages/[sensor]/[...all].svelte`,
+            path: normalize(`${currentPath}/test/assets/pages/[sensor]/[...all].svelte`),
           },
         ],
-        path: `${currentPath}/test/assets/pages/[sensor]`,
+        path: normalize(`${currentPath}/test/assets/pages/[sensor]`),
       },
       {
-        path: `${currentPath}/test/assets/pages/[...all].svelte`,
+        path: normalize(`${currentPath}/test/assets/pages/[...all].svelte`),
       },
     ];
 
@@ -82,26 +82,26 @@ describe('Crawler', () => {
           {
             children: [
               {
-                path: `${currentPath}/test/assets/deep-pages/foo/pages/index.svelte`,
+                path: normalize(`${currentPath}/test/assets/deep-pages/foo/pages/index.svelte`),
               },
             ],
-            path: `${currentPath}/test/assets/deep-pages/foo/pages`,
+            path: normalize(`${currentPath}/test/assets/deep-pages/foo/pages`),
           },
         ],
-        path: `${currentPath}/test/assets/deep-pages/foo`,
+        path: normalize(`${currentPath}/test/assets/deep-pages/foo`),
       },
       {
         children: [
           {
             children: [
               {
-                path: `${currentPath}/test/assets/deep-pages/bar/pages/index.svelte`,
+                path: normalize(`${currentPath}/test/assets/deep-pages/bar/pages/index.svelte`),
               },
             ],
-            path: `${currentPath}/test/assets/deep-pages/bar/pages`,
+            path: normalize(`${currentPath}/test/assets/deep-pages/bar/pages`),
           },
         ],
-        path: `${currentPath}/test/assets/deep-pages/bar`,
+        path: normalize(`${currentPath}/test/assets/deep-pages/bar`),
       },
     ];
 

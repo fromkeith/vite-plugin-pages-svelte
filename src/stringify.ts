@@ -3,6 +3,7 @@ import type { PreRoute } from './types/route';
 import { pathToName } from './utils/convert';
 import { haveChildren } from './crawler/crawler';
 import { sortRoute } from './utils/route';
+import { slash } from './utils/convert';
 
 // This is not on the types/ directory because this should only
 // be used in this file only.
@@ -58,7 +59,7 @@ function compileRouteItem(route: PreRoute): RouteItem {
     imp.push(...imps);
   } else {
     const importName = pathToName(route.path as string);
-    const importStr = `import ${importName} from "${route.path}"`;
+    const importStr = `import ${importName} from "${slash(route.path as string)}"`;
     if (!imp.includes(importStr)) {
       imp.push(importStr);
     }

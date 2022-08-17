@@ -11,7 +11,7 @@ describe('Options', () => {
       extensions: ['svelte'],
       extensionsRE: /\.(svelte)$/,
       pagesDir: 'test/assets/pages',
-      root: resolve(),
+      root: resolve().replace(/\\/g, '/'),
       syncIndex: true,
     });
   });

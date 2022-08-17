@@ -5,6 +5,7 @@ import { stringifyRoutes } from './stringify';
 import { haveChildren } from './crawler/crawler';
 import { extname } from 'path';
 import { sortRoute } from './utils/route';
+import { slash } from './utils/convert';
 
 /**
  * Generate
@@ -15,7 +16,8 @@ export function generateRoutes(pages: FileOutput[]): PreRoute[] {
   const routes: PreRoute[] = [];
 
   for (let i = 0; i < pages.length; i++) {
-    const node = pages[i].path.split('/')[pages[i].path.split('/').length - 1];
+    const fixedPath = slash(pages[i].path);
+    const node = fixedPath.split('/')[fixedPath.split('/').length - 1];
     const fileExt = extname(node);
     const isDynamic = isDynamicRoute(node.replace(fileExt, ''));
     const isCatchAll = isCatchAllRoute(node.replace(fileExt, ''));
