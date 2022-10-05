@@ -49,6 +49,25 @@ export function generateRoutes(pages: FileOutput[]): PreRoute[] {
       continue;
     }
 
+    // flatten if we can otherwise spa fails
+    if (pages[i].children && pages[i].children!.length === 1){
+      const c = pages[i].children as FileOutput[];
+      const myPath = slash(c[0].path);
+      const myNode = myPath.split('/')[myPath.split('/').length - 1]
+      const myFileExt = extname(myNode);
+      if (isDynamicRoute(myNode.replace(myFileExt, ''))) {
+        const myNorm = myNode
+          .replace(myFileExt, '')
+          .replace(/^\[(\.{3})?/, '')
+          .replace(/\]$/, '');
+        routes.push({
+          name: name + `/:${myNorm}`,
+          children: generateRoutes(c[0].children as FileOutput[]),
+        });
+        continue;
+      }
+    }
+
     routes.push({
       name,
       children: generateRoutes(pages[i].children as FileOutput[]),
