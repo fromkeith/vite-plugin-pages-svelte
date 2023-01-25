@@ -35,7 +35,7 @@
     "test": "jest --runInBand",
     "lint": "eslint --fix --ext .js,.ts,.vue,.json --ignore-path .gitignore .",
     "format": "prettier --write --ignore-path .gitignore .",
-    "prepare": "npm bun build"
+    "prepare": "npm run build"
   },
   "workspaces": [
     "examples"
