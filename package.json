@@ -41,7 +41,7 @@
     "examples"
   ],
   "peerDependencies": {
-    "svelte-router-spa": "github:fromkeith/svelte-router#4e053191a4b0159b2e1310fa0123c271c08057a8",
+    "svelte-router-spa": "github:fromkeith/svelte-router#a7df472ca5d55aed076e9abfcd365a232bd82dfc",
     "vite": ">=2"
   },
   "dependencies": {
